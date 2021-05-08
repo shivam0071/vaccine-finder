@@ -1,2 +1,2 @@
-# vaccine-finder
-Send email to users as soon as a slot is available
+# Flask Application Factory Pattern Boilerplate code
+Just use this to create future flask projects
