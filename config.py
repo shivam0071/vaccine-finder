@@ -10,6 +10,19 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY',
                                 "the_secret_key")  # for forms, prventing cross site attacks etc
 
+    MAIL_SERVER = os.environ.get('MAIL_SERVER', "smtp.gmail.com")  # server of our email ID
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', "587"))
+    MAIL_USE_TLS = True  # for security and encryption
+    MAIL_USE_SSL = False  # for security and encryption
+    # MAIL_DEBUG = False  # True if app[DEBUG] = True
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', "email_id_here")
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', "email_app_password")
+
+    MAIL_DEFAULT_SENDER = ("Team: Find Vaccine", MAIL_USERNAME)  # default from sender
+    MAIL_MAX_EMAILS = None  # prevent one mail call from sending too many emails
+    # MAIL_SUPPRESS_SEND =  None # similar to debug...here its app[TESTING] = True
+    MAIL_ASCII_ATTACHMENTS = False  # File names to ASCII
+
     # LOGGING
     LOGGING_BASE = {
         'version': 1,
