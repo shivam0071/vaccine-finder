@@ -6,7 +6,7 @@ from flask import current_app as app
 
 # SAMPLE DATA
 EMAIL_PIN_AND_AGE = {
-    'test@.com': {'400001': [18, 45]},
+'test@.com': {'400001': [18, 45]},
     }
 # {'email':{'pincode':[age1, age2]}}
 
@@ -74,12 +74,10 @@ def find_vaccine_deamon_helper(pincode=[], age=[18]):
                 center_found = False
         print("*" * 20 + f" Scanning FINISHED for PIN - {pin} " + "*" * 20)
 
-    # app.logger.info(f"PIN - {pincode}  AGE - {age}")
-    # app.logger.info(f"Vaccine Info - {vaccine_info}")
     return vaccine_info
 
 def vaccination_thread():
-    app.logging.info("Starting Vaccination Deamon")
+    print("Starting Vaccination Deamon")
     global EMAIL_PIN_AND_AGE
     reset_cache_timer = constants.THREAD_REFRESH + 1
     while True:
