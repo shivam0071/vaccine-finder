@@ -4,7 +4,6 @@ from config import Config
 import config
 import os
 from flask_cors import CORS
-from threading import Thread
 from vaccine import util
 from flask_mail import Mail
 
@@ -37,13 +36,8 @@ def create_app(config_class=Config):
     cors.init_app(app)
     mail.init_app(app)
 
-
     # Add blueprints here
     from vaccine.routes import vaccine
     app.register_blueprint(vaccine)
-
-    # Threads Here
-    thread = Thread(target=util.vaccination_thread, daemon=True)
-    thread.start()
 
     return app

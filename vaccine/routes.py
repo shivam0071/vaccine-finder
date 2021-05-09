@@ -30,17 +30,22 @@ def find_vaccine_1():
     vaccine_data = util.find_vaccine_deamon_helper([pin], [age])
     if vaccine_data:
         return {'result': vaccine_data}
+    return {'result': "Vaccines Are Fully Booked"}
 
-    return {'result': 'failed'}
 
-@vaccine.route("/send-vaccine-email/v1", methods=["GET"])
+@vaccine.route("/vaccine-email", methods=["GET"])
 def send_email():
     try:
-        html_template = render_template("email_template.html", data=len(constants.EMAIL_DATA))
-        msg = Message('Vaccine Ping: Covid-19 Vaccine Available...', bcc=['']) # recipients here
-        msg.html = html_template
-        mail.send(msg)
-        return {"Result": "Email Sent Successfully"}
+        for email, value in constants.EMAIL_DATA.items():
+            msg = Message('Vaccine Ping: Covid-19 Vaccine Available...', bcc=[email]) # recipients here
+            if not value:
+                print(f"***Email Data not found for email {email}***")
+                continue
+            html_template = render_template("email_template.html", data=value)
+            msg.html = html_template
+            mail.send(msg)
+
+        return {"Result": "API ran Successfully"}
 
     except Exception as ex:
         print("MAIL EXCEPTION", ex)

@@ -5,6 +5,9 @@
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
+            width: 50%;
+            padding: 2px 0px 2px 0px;
+            text-align: center;
         }
     </style>
 </head>
@@ -12,9 +15,24 @@
     <p>Dear Subscriber,</p>
     <br>
     <p>Here is the Vaccine Information</p>
-    <!-- Edit the Template Accordingly-->
-    <p> No of Users Subscribed --> {{ data }} </p>
-    <!-- Edit the Template Accordingly-->
+    <table>
+     {% for pin_data in data %}
+        <tr>
+            <th>S No.</th>
+            <td>{{loop.index}}</td>
+        </tr>
+        {% for key, val in pin_data.items() %}
+                <tr>
+                <th>{{key}}</th>
+                <td>{{val}}</td>
+                </tr>
+        {% endfor %}
+        <tr>
+            <th>------</th>
+            <td>------</td>
+        </tr>
+     {% endfor %}
+    </table>
     <br>
     <br>
 
