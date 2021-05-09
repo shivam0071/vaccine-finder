@@ -9,7 +9,8 @@ Send email to users as soon as a slot is available
 
 #### SAMPLE DATA
 
-#### EMAIL_PIN_AND_AGE = {
+#### 
+     EMAIL_PIN_AND_AGE = {
     'test@.com': {'400001': [18, 45]},
      }
 #### {'email':{'pincode':[age1, age2]}}
